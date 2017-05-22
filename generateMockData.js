@@ -73,8 +73,11 @@ function byDimFeiyong(datas,keys){
 			byDim[unionkeys.length-1]['key'] = unionkey;
 			keys.forEach((key,index)=>byDim[unionkeys.length-1][key] = fieldKeys[index]);
 			byDim[unionkeys.length-1].feiyong= data.feiyong;
+			byDim[unionkeys.length-1].details = [];
+			byDim[unionkeys.length-1].details.push(data);
 		}else{
 			byDim[unionkeys.indexOf(unionkey)].feiyong+=data.feiyong;
+			byDim[unionkeys.indexOf(unionkey)].details.push(data);
 		}
 	});	
 	return byDim;
@@ -152,6 +155,9 @@ allSeq.forEach(seq=>{
 		output[seq] = byDimFeiyong(fullData,seq.split("by").filter(d=>d!==""));
 	}
 })
+
+
+
 
 
 //http://localhost:3333/byhospitalbyyishengbyzhenduan?key_like=%E5%8F%91%E7%83%AD
