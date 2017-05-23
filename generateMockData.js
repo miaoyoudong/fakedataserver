@@ -79,6 +79,10 @@ function byDimFeiyong(datas,keys){
 			byDim[unionkeys.indexOf(unionkey)].feiyong+=data.feiyong;
 			byDim[unionkeys.indexOf(unionkey)].details.push(data);
 		}
+	});
+	byDim = byDim.map(d=>{
+		d.feiyong = d.feiyong/d.details.length;
+		return d;
 	});	
 	return byDim;
 }
@@ -164,4 +168,4 @@ allSeq.forEach(seq=>{
 
 
 
-fs.writeFile(path.join(__dirname,'demo.json'), JSON.stringify(output), err=>console.log(err))
+fs.writeFile(path.join(__dirname,'demo.json'), JSON.stringify(output,null,2), err=>console.log(err))
